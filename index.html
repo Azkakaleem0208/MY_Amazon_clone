@@ -8,6 +8,44 @@
  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <i class="fa-solid fa-circle-user"></i>
+      <h3>Hello, Sign In</h3>
+      <i class="fa-solid fa-xmark" id="close-sidebar"></i>
+    </div>
+    <div class="sidebar-content">
+      <div class="sidebar-item">
+        <h3>Trending</h3>
+        <ul>
+          <li>Best Sellers</li>
+          <li>New Releases</li>
+          <li>Movers and Shakers</li>
+        </ul>
+      </div>
+      <hr>
+      <div class="sidebar-item">
+        <h3>Digital Content & Devices</h3>
+        <ul>
+          <li>Amazon Prime Video</li>
+          <li>Amazon Music</li>
+          <li>Echo & Alexa</li>
+        </ul>
+      </div>
+      <hr>
+      <div class="sidebar-item">
+        <h3>Shop By Category</h3>
+        <ul>
+          <li>Electronics</li>
+          <li>Mobiles</li>
+          <li>Computers</li>
+          <li>Smart Home</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="overlay" id="overlay"></div>
+
   <header>
     <div class="navbar">
       <div class="navlogo border"> <!-- BOX1 -->
@@ -20,11 +58,17 @@
          <div class ="addicon"> 
          <i class="fa-solid fa-location-dot"></i>
          <p class="loc_S">India</p>
+         <i class="fa-solid fa-caret-down dropdown-icon"></i>
          </div>
         </div>
       <div class="navsearch" > <!-- BOX3 -->
         <select class="search-select">
           <option>All</option>
+          <option>Electronics</option>
+          <option>Home & Kitchen</option>
+          <option>Books</option>
+          <option>Beauty</option>
+          <option>Fashion</option>
         </select>
         <input placeholder="Search Amazon" class="search-input"></input>
         <div class="Searchicon"> 
@@ -34,11 +78,11 @@
        <!-- BOX4 -->
       <div class="LANG border">
         <div class="LANG_img"></div>
-        <DIV class="LANG_button">
-          EN<SELect class="button">
-          <OPtion>English</OPtion>
-          </SELect>
-          </DIV>
+        <select class="lang-select">
+          <option>EN</option>
+          <option>HI</option>
+          <option>ES</option>
+        </select>
       </div>
       <!-- BOX5 -->
       <div class="nav_signin border">
@@ -56,9 +100,10 @@
         </div>
   </div>
   <DIV class="PANEL">
-    <div class="PANEL-ALL border">
+    <div class="PANEL-ALL border" id="open-sidebar">
       <i class="fa-solid fa-bars"></i>
       All
+      <i class="fa-solid fa-caret-down dropdown-icon"></i>
     </div>
     <div class="panel-ops">
       <p>Today's Deals</p>
@@ -66,14 +111,18 @@
       <p>Prime Video</p>
       <p>Gift Cards</p>
       <p>Customer Service</p>
-       <p>Sell</p>
+      <p>Sell</p>
+      <p>Electronics</p>
+      <p>Home & Kitchen</p>
+      <p>Mobiles</p>
+      <p>Amazon Pay</p>
     </div>
   </DIV>
   </header>
 
   <div class="herosection">
     <div class="hero-msg">
-    <p> You are on amazon.com. You can also shop on Amazon India for millions of products with fast local delivery.<a> Click here to go to amazon.in</a></p>
+    <p> You are on amazon.com. You can also shop on Amazon India for millions of products with fast local delivery.<a href="https://www.amazon.in/"> Click here to go to amazon.in</a></p>
     </div>
   </div>
   <div class="shop-section">
@@ -208,5 +257,43 @@
       </div>
     </div>
   </footer>
+  <footer>
+    <div class="back-to-top" id="back-to-top">
+      Back to Top
+    </div>
+  </footer>
+
+  <script>
+    const openSidebar = document.getElementById('open-sidebar');
+    const closeSidebar = document.getElementById('close-sidebar');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+    const backToTop = document.getElementById('back-to-top');
+
+    openSidebar.addEventListener('click', () => {
+      sidebar.classList.add('active');
+      overlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+
+    closeSidebar.addEventListener('click', () => {
+      sidebar.classList.remove('active');
+      overlay.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    });
+
+    overlay.addEventListener('click', () => {
+      sidebar.classList.remove('active');
+      overlay.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    });
+
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  </script>
 </body>
 </html>
